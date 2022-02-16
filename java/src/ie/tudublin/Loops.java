@@ -100,7 +100,8 @@ public class Loops extends PApplet
 			case 2:
 				for(int i = 0; i < 10; i++)
 				{
-
+					fill(i, 255, 255);
+					rect(i, 0, i+50);
 				}
 				break;
 		}
