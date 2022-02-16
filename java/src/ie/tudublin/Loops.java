@@ -6,6 +6,7 @@ public class Loops extends PApplet
 {
 
 	int mode = 0;
+	int option = 0;
 
 	public void settings()
 	{
@@ -14,7 +15,7 @@ public class Loops extends PApplet
 
 	public void setup() {
 
-		colorMode(RGB);
+		colorMode(HSB);
 		background(142, 142, 142);
 		noStroke();
 		frameRate(100);
@@ -31,54 +32,56 @@ public class Loops extends PApplet
 		println(mode);
 	}
 
-	
+	public void case01()
+	{
+		if(mouseX <= 250)
+		{
+			fill(255,109,203);
+			rect(0, 0, 250, 500);
+		}
+		else if(mouseX > 250)
+		{
+			fill(255,109,203);
+			rect(250, 0, 250, 500);
+		}
+	}
+
+	public void case02()
+	{
+		if(mouseX <= 250 && mouseY <= 250)
+		{
+			fill(255,109,203);
+			rect(0, 0, 250, 250);
+		}
+		else if(mouseX <= 250 && mouseY > 250)
+		{
+			fill(255,109,203);
+			rect(0, 250, 250, 250);
+		}
+		else if(mouseX > 250 && mouseY <= 250)
+		{
+			fill(255,109,203);
+			rect(250, 0, 250, 250);
+		}
+		else if(mouseX > 250 && mouseY > 250)
+		{
+			fill(255,109,203);
+			rect(250, 250, 250, 250);
+		}
+	}
 
 	public void mouseClicked()
 	{
-		switch(mode)
+		if(option == 0)
 		{
-			case 0:
-				int option = 0;
-				if(option == 0)
-				{
-					option ++;
-					if(mouseX <= 250)
-						{
-							fill(255,109,203);
-							rect(0, 0, 250, 500);
-						}
-						else if(mouseX > 250)
-						{
-							fill(255,109,203);
-							rect(250, 0, 250, 500);
-						}
-				}
-				else
-				{
-					option--;
-					if(mouseX <= 250 && mouseY <= 250)
-						{
-							fill(255,109,203);
-							rect(0, 0, 250, 250);
-						}
-						else if(mouseX <= 250 && mouseY > 250)
-						{
-							fill(255,109,203);
-							rect(0, 250, 250, 250);
-						}
-						else if(mouseX > 250 && mouseY <= 250)
-						{
-							fill(255,109,203);
-							rect(250, 0, 250, 250);
-						}
-						else if(mouseX > 250 && mouseY > 250)
-						{
-							fill(255,109,203);
-							rect(250, 250, 250, 250);
-						}
-				}
+			case01();
+			option = 1;
 		}
-		
+		else
+		{
+			case02();
+			option = 0;
+		}
 	}
 
 	public void draw()
@@ -88,12 +91,17 @@ public class Loops extends PApplet
 		switch(mode)	
 		{
 			case 0:
-				
-				
+				case01();
 				break;
 			
 			case 1:
-				
+				case02();
+				break;
+			case 2:
+				for(int i = 0; i < 10; i++)
+				{
+
+				}
 				break;
 		}
 	}
