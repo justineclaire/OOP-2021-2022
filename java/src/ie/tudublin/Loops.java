@@ -70,20 +70,6 @@ public class Loops extends PApplet
 		}
 	}
 
-	public void mouseClicked()
-	{
-		if(option == 0)
-		{
-			case01();
-			option = 1;
-		}
-		else
-		{
-			case02();
-			option = 0;
-		}
-	}
-
 	public void draw()
 	{
 		background(0);
@@ -98,10 +84,46 @@ public class Loops extends PApplet
 				case02();
 				break;
 			case 2:
-				for(int i = 0; i < 10; i++)
+				background(0);
+				int bars = 10;
+				float w = width/(float)bars;
+				for(int i = 0; i < bars; i++)
 				{
-					fill(i, 255, 255);
-					rect(i, 0, i+50);
+					fill(map(i, 0, bars, 0, 255), 255, 255);
+					rect(map(i, 0, bars, 0, 500), 0, w, 500);
+
+				}
+				break;
+			case 3:
+				background(0);
+				int squares = 10;
+				float wi = width/(float)squares;
+				for(int i = 0; i < squares; i++)
+				{
+					fill(map(i, 0, squares, 0, 255), 255, 255);
+					rect(map(i, 0, squares, 0, 500), map(i, 0, squares, 0, 500), wi, wi);
+				}
+				break;
+			case 4:
+				background(0);
+				int squaresx = 10;
+				float wx = width/(float)squaresx;
+				for(int i = 0; i < squaresx; i++)
+				{
+					float x = map(i, 0, squaresx, 0, 500);
+					fill(map(i, 0, squaresx, 0, 255), 255, 255);
+					rect(x, x, wx, wx);	
+					rect((width-x) - wx, x, wx, wx);
+				}
+				break;
+			case 5:
+				background(0);
+				int ellipses = 10;
+				for(int i = ellipses; i < 0; i--)
+				{
+					float r = map(i, 0, ellipses, 0, 400);
+					fill(map(i, 0, ellipses, 0, 255), 255, 255);
+					ellipse(width/2, height/2, r, r);
 				}
 				break;
 		}
