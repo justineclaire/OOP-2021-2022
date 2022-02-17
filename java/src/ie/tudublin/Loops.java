@@ -4,14 +4,14 @@ import processing.core.PApplet;
 
 public class Loops extends PApplet {
 
-	int mode = 2;
+	int mode = 4;
 
 	public void settings() {
 		size(500, 500);
 	}
 
 	public void setup() {
-		colorMode(HSB);
+		colorMode(RGB);
 
 	}
 
@@ -94,6 +94,62 @@ public class Loops extends PApplet {
 					}
 				}
 				
+				break;
+			case 3:
+				background(0);
+				/*int numx = -5;
+				int numy = -5;
+
+				for(int i = 0; i < 10; i ++)
+				{
+					for (int j = 0; j < 10; j++)
+					{
+						stroke(120, 255, 255);
+						
+					}
+				}*/
+				float border = width * 0.1f;
+				for (int k = -5; k < 5; k++)
+				{
+					float x = map( k , -5, 5, border, width - border);
+					stroke(0, 255, 0);
+					line(x, border, x, height - border);
+					line(border, x, width - border, x);
+					fill(255);
+					text(k, x, border*0.5f);
+					text(k, border*0.5f, x);
+				}
+				break;
+			case 4:
+				background(0);
+				/*float r = 150;
+				float cx = width/2;
+				float cy = height/2;
+
+				for(float i = 0; i < 5; i++)
+				{
+					i = i*90;
+					stroke(0);
+					line(cx, cy, (cx + sin(i)*r), (cy + cos(i)*r) );
+				}*/
+
+				stroke(255);
+				float radius = 200;
+				float cx = width/2;
+				float cy = height/2;
+				int sides = (int)map(mouseX, 1, width, 0, 20);
+				for(int i = 0; i <= sides; i++)
+				{
+					float theta = map(i - 1, 0, sides, 0, TWO_PI);
+					float x = cx + sin(theta) * radius;
+					float y = cy + sin(theta) * radius;
+
+					float theta2 = map(i, 0, sides, 0, TWO_PI);
+					float x2 = cx + sin(theta2) * radius;
+					float y2 = cy + sin(theta2) * radius;
+					line(x, y, x2, y2);
+				}
+
 				break;
 
 		}
